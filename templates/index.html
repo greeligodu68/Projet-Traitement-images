@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Uploader</title>
+    <title>Filtre d'Images</title>
+</head>
+<body>
+    <h1>Uploader une image</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Uploader">
+    </form>
 
-<p>nique leaejbeg !aelbug aeua </p>
-    
-   
+    {% if filename %}
+        <h2>Image originale :</h2>
+        <img src="{{ url_for('static', filename='uploads/' + filename) }}" width="300">
+
+        <h2>Appliquer un filtre :</h2>
+        <a href="{{ url_for('filter_image', filter_name='grayscale', filename=filename) }}">Grayscale</a> |
+        <a href="{{ url_for('filter_image', filter_name='invert', filename=filename) }}">Inverser</a> |
+        <a href="{{ url_for('filter_image', filter_name='blur', filename=filename) }}">Flou</a> |
+        <a href="{{ url_for('filter_image', filter_name='edges', filename=filename) }}">Contours</a>
+    {% endif %}
 </body>
 </html>
