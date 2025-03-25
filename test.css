@@ -1,0 +1,148 @@
+*,
+::before,
+::after {
+    box-sizing : border-box ;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family : Roboto, Helvetica, sans-serif;
+    background : #fff
+
+}
+.main-contain {
+    padding: 3vw 5vw 5vw;
+}
+
+h1{
+    font-family : Playfair Display, serif;
+    font-size : clamp(25px, 7vw, 70px);
+    font-weight : 200;
+    left :clamp(300px,15vw,500px);
+}
+h1 + span {
+    font-size:clamp(14px, 2vw, 20px);
+}
+.slideshow-container{
+    margin-top:  4vw;
+    overflow: hidden;
+    min-height: 60vmin;
+    height: 60vmin;  
+    cursor: grab;
+    position: relative;
+    display: flex; 
+}
+.slideshow-container:active {
+    cursor: grabbing;
+}
+.slideshow{
+    position: absolute;
+    height: 100%;
+    display : flex;
+    pointer-events : none;
+}
+.slide {
+    flex-shrink: 0;
+    height : 100%;
+    width: 80vmin;
+    height: 50  vmin;
+    color: #fff;
+    background-size: cover;
+    background-position:center;
+    position : relative;
+}
+.slide:not(:nth-child(1)){
+    margin-left: 10px;
+}
+.overlay{
+    position : absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background : rgba(0,0,0,0.15) ;
+}
+.slide h2, .slide a{
+    text-shadow: 0 0 5px rgba(0,0,0,0.39);
+}
+.slide h2{
+    position : absolute;
+    top: clamp(10px, 3vw, 20px);
+    left: clamp(10px, 3vw, 20px);
+    font-size: clamp(20px,3vw,40px);
+    font-weight: 300;
+    z-index: 2;
+    margin: 0;
+}
+
+.slide a{
+    position : absolute;
+    bottom: clamp(10px, 3vw, 20px);
+    right: clamp(10px, 3vw, 20px);
+    font-size: clamp(16px,3vw,20px);
+    font-weight: 300;
+    color: #fff;
+    pointer-events : auto;
+}
+
+.slide h2,
+.slide a {
+    user-select: none; /* Empêche la sélection du texte */
+}
+
+.s1{
+    background-image : url("https://lh3.googleusercontent.com/proxy/1UWNTBuRp6Q792Li117TrRgSKRZeS-SWYAdW1K0B_dbMjpdB1vM-L7Fsuy2Rmhr10KH0on54Itwezrr8_6dlZCrGOAr04pJLPPiGHF42oqqlJ2DKv_CYqX3nwUm_BOtGpu6VM_Kcs0ng6Z4b4Q")
+}
+
+.s2{
+    background-image : url("https://i1.rgstatic.net/ii/profile.image/278733341642765-1443466615524_Q512/Francois-Vonau.jpg")
+}
+
+.s3{
+    background-image : url("https://www.is2m.uha.fr/wp-content/uploads/2017/06/ahmed-mehdaoui.jpg")
+}
+
+.s4{
+    background-image : url("https://www.aefinfo.fr/assets/medias/documents/4/0/405901_prv.jpeg")
+}
+
+.s5{
+    background-image : url("https://www.is2m.uha.fr/wp-content/uploads/2017/06/guillaume-garreau.jpg")
+}
+.s6{
+    background-image : url("https://www.hilarispublisher.com/admin/editor-photos/journalofgeneralizedlietheoryandapplications-remm-elisabeth-20077.jpg")
+}
+.s7{
+    background-image : url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0cFgrdZDBsSlmeEBgYGpbc9RBx9s7EMS5Aw&s")
+}
+.s8{
+    background-image : url("https://e-portfolio.uha.fr/thumb.php?type=profileiconbyid&id=2216&view=34&maxwidth=80")
+}
+.s9{
+    background-image : url("https://media.licdn.com/dms/image/v2/C4E03AQEiynrE4n8kng/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1604917782724?e=2147483647&v=beta&t=rNfM4wKT5dB1QZqB8ixCO9Qp0engHmljXqM3NPe8360")
+}
+.s10{
+    background-image : url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS88MKY6V9y9RXYYbWuA9KYYAViUvOHV85HZw&s")
+}
+.s11{
+    background-image : url("https://p4test11.uni-freiburg.de/de/nachrichten/nachrichten-2020/two-doctoral-dissertations-defendet/image_mini")
+}
+.s12{
+    background-image : url("https://www.is2m.uha.fr/wp-content/uploads/2017/06/carmelo-pirri.jpg")
+}
+.s13{
+    background-image : url("https://www.is2m.uha.fr/wp-content/uploads/2017/10/dominique-berling.jpg")
+}
+.s14{
+    background-image : url("https://image-uniservice.linternaute.com/image/450/5/1580317754/8490855.jpg")
+}
+.s15{
+    background-image : url("https://i1.rgstatic.net/ii/profile.image/11431281225676509-1708838945422_Q512/Mathieu-Decrette.jpg")
+}
+.s16{
+    background-image : url("https://cdn-s-www.vosgesmatin.fr/images/FF3D8CD1-E0DF-457C-A4B7-02039CECF472/NW_raw/frederic-dulot-candidat-pour-un-second-mandat-1424966550.jpg")
+}
+.s17{
+    background-image : url("https://www.is2m.uha.fr/wp-content/uploads/2018/01/roucoules-1.jpg")
+}
