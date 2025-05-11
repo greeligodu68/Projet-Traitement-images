@@ -1,11 +1,379 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: apple-system, sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    text-decoration: none;
+    list-style: none;
 
-.fichier{
 
-    padding: 5px 5px;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    color: white;
-    background-color: #007BFF;
+
+}
+
+input[type=file] {
+    display: none;
+  }
+
+
+  label span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    user-select: none;
+    text-wrap: nowrap;
+  }
+.up_img{
+    
+    top: 0;
+    left: 0;
+    position: absolute;
+    object-fit: fill;
+    height: auto;
+    width: 100%;
+    height: 100%;
+   
+    border-radius: 2rem;
+    
+}
+  
+
+
+:root{
+    --bg-color: #ffffff;
+    --main-color: #e0e0e0;
+    --add-color : #2e3135cb;
+    --text-color: #101010;
+    --h1-font: 5rem;
+    --h2-font: 2.23rem;
+    --p-font: 0.9rem;
+}
+
+body{
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    background-image : url("../static/Images/gray_bg2.jpg");
+    background-size: 100% 100%;
+    background-position: center; 
+    background-repeat: no-repeat;
+    z-index: -1;
+
+}
+/* header code */
+
+header{
+    width: 100%;
+    z-index: 999;
+    padding: 20px 0px ;
+    top:0;
+    right:0;
+    left:0;
+    align-items: center;
+    background-color: var(--add-color);
+    margin-right: 10rem;
     
 }
 
+.logo{
+    color: var(--bg-color);
+    font-family: Playfair Display, serif;
+    font-weight: 600;
+    font-size: 2.8rem;
+    transition: 0.3s ease;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.logo:hover{
+    transform: scale(1.07);
+}
+
+.navbar{
+    display: flex;
+}
+
+.navbar a{
+    margin-right: 4rem;
+    color: var(--bg-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: 0.5s ease;
+}
+
+.navbar a:hover{
+    transform: scale(1.2);
+    color :var(--text-color);
+}
+
+
+/*home*/
+
+.navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin:2rem;
+    margin-top: 7rem;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 10px;
+
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 250px;
+    height: 60px;
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: var(--add-color);
+    color: var(--bg-color) ;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: -3rem;
+}
+
+.btn:hover{
+    transform: scale(1.05);
+    color: var(--bg-color);
+    box-shadow: 0px 0px 10px 5px #6e97d4;
+}
+
+/* importation */
+
+.import-container{
+    align-items: center;
+    margin: 2rem;
+    padding: 2rem;
+    display: flex;
+}
+
+
+.box{
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    height: 32rem;
+    width: 40rem;
+    background-color:var(--add-color) ;
+    padding: 2rem;
+    border-radius: 2rem;
+    transition: 0.4s ease;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+
+   
+  
+}
+
+
+.import-container .box:hover{
+    transform: scale(1.04);
+    border: 2.6px var(--add-color) solid ;
+}
+
+.import-container .box h1{
+    margin: 2rem;
+    color: var(--bg-color);
+    font-size: 30px;
+    align-items: center;
+}
+
+
+/* filters codee */
+
+.main-contain{
+    padding: 0rem 2rem 0rem 0rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.main-contain::after{
+    content: '';
+    position: absolute;
+    margin-left:-3rem;
+    margin-top: 2rem;
+    height: 90%;
+    width: 110%;
+    background-image: url("../static/Images/Film4.png");
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+    opacity: 1;
+
+    pointer-events: none;
+}
+
+.filters{
+    user-select: none;
+    
+
+}
+
+.filters h2{
+    font-size: 1.7rem;
+    text-align: center;
+    font-weight: 100;
+    margin-top: 0.5rem;
+   
+}
+
+.filters a{
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 100;
+}
+
+
+.slideshow-container {
+    position: relative;
+    margin-top: 2rem;
+    overflow: hidden;
+    min-height: 60vmin;
+    height: 60vmin;  
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease;
+}
+
+
+.slideshow-container:active {
+    cursor: grabbing;
+}
+
+.slideshow {
+    height: 100%;
+    display: flex;
+    position: relative;
+    z-index: 2; /* Ensure slides appear above the film */
+}
+
+.slideshow-container :hover{
+    transform: scale(1.05);
+    color: var(--bg-color);
+}
+
+.slide {
+    flex-shrink: 0;
+
+    width: 230px;
+    height: 230px;
+    color: #fff;
+    background-size: cover;
+    background-position:center;
+    position : relative;
+    border-radius: 15%;
+    z-index: 1;
+}
+.slide:not(:nth-child(1)){
+    margin-left: 10px;
+}
+
+.overlay{
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+    position : absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 15%;
+    z-index: -1;
+    text-align: center;
+    align-items: center;
+}
+
+.link{
+    position: absolute;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    align-items: center;
+    font-size: 25px;
+    font-family: sans-serif;
+   
+    top: 12rem;
+    left:3.5rem;
+    
+}
+
+h1{
+    font-family : Playfair Display, serif;
+  
+    font-weight : 200;
+ 
+    user-select: none;
+    text-align: center;
+    margin-top: auto;
+   
+    
+}
+
+
+.slide a {
+    user-select: none; /* Empêche la sélection du texte */
+}
+
+.s1{
+    background-image : url("../static/Images/nature.jpg")}
+
+.s2{
+    background-image : url("../static/Images/nature_gray.jpg")}
+
+
+.s3{
+    background-image : url("../static/Images/nature_bruité.png")}
+
+
+.s4{
+    background-image : url("../static/Images/erosion_nature.jpg")}
+
+
+.s5{
+  background-image : url("../static/Images/dilation_nature.jpg");
+ 
+
+}
+
+.s6{
+    background-image : url("../static/Images/gradient_nature.jpg")}
+.s7{
+    background-image : url("../static/Images/edge_detection_nature.jpg.")}
+.s8{
+    background-image : url("../static/Images/nature.jpg")}
+.s9{
+    background-image : url("../static/Images/nature.jpg")}
+.s10{
+    background-image : url("../static/Images/nature.jpg")}
+.s11{
+    background-image : url("../static/Images/nature.jpg")}
+.s12{
+    background-image : url("../static/Images/nature.jpg")}
+.s13{
+    background-image : url("../static/Images/nature.jpg")}
+.s14{
+    background-image : url("../static/Images/nature.jpg")}
+.s15{
+    background-image : url("../static/Images/nature.jpg")}
+.s16{
+    background-image : url("../static/Images/nature.jpg")}
+.s17{
+    background-image : url("../static/Images/nature.jpg")}

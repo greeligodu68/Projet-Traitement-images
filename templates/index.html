@@ -1,122 +1,170 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en"> 
+
 <head>
     <meta charset="UTF-8">
-    <title>Traitement d'image</title>
-    <link rel="stylesheet" href="test.css">
+    <title> Site traitement d'image</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-    <h1>Charger une image</h1>
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <button type="submit">Charger</button>
-    </form>
+    <header>
+        <a href="#home" class="logo">Site traitement d'image</a>
+    </header>
+    <section class="navigation">
+        <ul class="navbar">
+            <a href="#filters" class="btn">
+                Filters
+            </a>
+            <a href="#effects" class="btn">
+                Effects
+            </a>
+            <a href="#advanced" class="btn">
+                Advanced
+            </a>
+        </ul>
+    </section>
+    <section class="import" id="import">        
+        <div class="import-container">
+            <!-- Boîte pour l'image originale -->
+            <div class="box">
+                <h1>Image</h1>
 
+                <form method="post" enctype="multipart/form-data">
+                    <input class="file" type="file" name="file"> 
+                    <button type="submit">Charger</button>
+                </form>
 
-    {% if filename %}
-    <img src="{{ url_for('static', filename='uploads/' + filename)}}" width="300">
+                {% if filename %}
+                    <img src="{{ url_for('static', filename='uploads/' + filename)}}" >
+                {% endif %}
+            </div>
+    
+            <!-- Boîte pour l'image traitée -->
+            <div class="box">
+                <h1>Résultat</h1>
 
-    <br>
-    <a href="{{ url_for('convert_to_gray', filename=filename) }}">Convertir en Gris</a>
-    <br>
-    <a href="{{url_for('filtre_moyenneur_image', filename= filename) }}">filtre moyenneur</a>
-    <br>
-    <a href="{{ url_for('download_file', filename=filename) }}">Télécharger</a>
-{% endif %}
-     <div class = "main-contain">
-        <h2>Séléctionnez votre Prof</h2>
-        <span>Intégrez l'ENSISA</span>
-        <div class = "slideshow-container">
-            <div class="slide s1">
-                <div class="overlay"></div>
-                <h2>Rosé NUSSBAUMER</h2>
-                <a href="https://cms.iopscience.org/2b3ae307-062d-11e1-9ef2-e901e4daa3c3/SPM%20-%20Simon2.jpg?guest=true">Le crack</a>
-            </div>
-            <div class="slide s2">
-                <div class="overlay"></div>
-                <h2>François VONOTE-PAHOUF</h2>
-                <a href="#">Le géant royal</a>
-            </div>
-            <div class="slide s3">
-                <div class="overlay"></div>
-                <h2>Ahmed MAMADOUI</h2>
-                <a href="#">Le beau gosse</a>
-            </div>
-            <div class="slide s4">
-                <div class="overlay"></div>
-                <h2>Jean-Luc BISCOTTE</h2>
-                <a href="#">L'amoureux du Maroc</a>
-            </div>
-            <div class="slide s5">
-                <div class="overlay"></div>
-                <h2>Guillaume BARREAU</h2>
-                <a href="#">Le raciste</a>
-            </div>
-            <div class="slide s6">
-                <div class="overlay"></div>
-                <h2>Elisabeth REINE-VECTORIEL</h2>
-                <a href="#">L'autiste folle</a>
-            </div>
-            <div class="slide s7">
-                <div class="overlay"></div>
-                <h2>Karime MOUGIN</h2>
-                <a href="#">La j'ai pas le temps</a>
-            </div>
-            <div class="slide s8">
-                <div class="overlay"></div>
-                <h2>Karine ZAMPEPLUS</h2>
-                <a href="#">La vitesse</a>
-            </div>
-            <div class="slide s9">
-                <div class="overlay"></div>
-                <h2>Juliette Âne</h2>
-                <a href="#">Smash it</a>
-            </div>
-            <div class="slide s10">
-                <div class="overlay"></div>
-                <h2>Christophe KREMBLE-OPOME</h2>
-                <a href="#">Le charisme</a>
-            </div>
-            <div class="slide s11">
-                <div class="overlay"></div>
-                <h2> Jamerson CARNEIRO DE OLIVEIRA </h2>
-                <a href="#">Le fruité</a>
-            </div>
-            <div class="slide s12">
-                <div class="overlay"></div>
-                <h2>Carmelo PYROMAN</h2>
-                <a href="#">Le clopeur fou</a>
-            </div>
-            <div class="slide s13">
-                <div class="overlay"></div>
-                <h2>Dominique DEGLINGUE</h2>
-                <a href="#">LE COCAINOMAN</a>
-            </div>
-            <div class="slide s14">
-                <div class="overlay"></div>
-                <h2>Christian RIGOUREUX</h2>
-                <a href="#">Le Vig's</a>
-            </div>
-            <div class="slide s15">
-                <div class="overlay"></div>
-                <h2>Mathieu QUEQUETTE</h2>
-                <a href="#">Le quel mail ?</a>
-            </div>
-            <div class="slide s16">
-                <div class="overlay"></div>
-                <h2>Frédérique CULOT</h2>
-                <a href="#">Le roi des minions</a>
-            </div>
-            <div class="slide s17">
-                <div class="overlay"></div>
-                <h2>Vincent ROUCOUPS</h2>
-                <a href="#">Le gros tuyau</a>
+                {% if processed_filename %}
+                    <img src="{{ url_for('static', filename='uploads/' + processed_filename)}}" width="100%">
+                {% endif %}
             </div>
         </div>
+    </section>  
+
+    <!-- Section pour les filtres -->
+    <section>
+    {% if filename %}
+        <a href="{{ url_for('convert_to_gray', filename=filename) }}">Convertir en Gris</a>
+        <a href="{{ url_for('filtre_moyenneur_image', filename=filename) }}">Filtre Moyenneur</a>
+        {% endif %}
+        {% if processed_filename %}
+        <a href="{{ url_for('download_file', filename=processed_filename) }}">Télécharger</a>
+    {% endif %}
+    </section>
+   
 
 
-    </div>
 
-<script src="test.js"></script>
+
+
+    <section class="filters" id="filters">
+        <div class = "main-contain">
+            <div class = "slideshow-container">
+                <div class="slide s1">
+                    <div class="overlay"></div>
+                    <h2> gray filter</h2>
+                    <a href="#">convert_to_gray</a>
+                </div>
+
+                <div class="slide s2">
+                    <div class="overlay"></div>
+                    <h2>François VONOTE-PAHOUF</h2>
+                    <a href="#">Le géant royal</a>
+                </div>
+
+                <div class="slide s3">
+                    <div class="overlay"></div>
+                    <h2>Ahmed MAMADOUI</h2>
+                    <a href="#">Le beau gosse</a>
+                </div>
+
+                <div class="slide s4">
+                    <div class="overlay"></div>
+                    <h2>Jean-Luc BISCOTTE</h2>
+                    <a href="#">L'amoureux du Maroc</a>
+                </div>
+
+                <div class="slide s5">
+                    <div class="overlay"></div>
+                    <h2>Guillaume BARREAU</h2>
+                    <a href="#">Le raciste</a>
+                </div>
+                <div class="slide s6">
+                    <div class="overlay"></div>
+                    <h2>Elisabeth REINE-VECTORIEL</h2>
+                    <a href="#">L'autiste folle</a>
+                </div>
+                <div class="slide s7">
+                    <div class="overlay"></div>
+                    <h2>Karime MOUGIN</h2>
+                    <a href="#">La j'ai pas le temps</a>
+                </div>
+                <div class="slide s8">
+                    <div class="overlay"></div>
+                    <h2>Karine ZAMPEPLUS</h2>
+                    <a href="#">La vitesse</a>
+                </div>
+                <div class="slide s9">
+                    <div class="overlay"></div>
+                    <h2>Juliette Âne</h2>
+                    <a href="#">Smash it</a>
+                </div>
+                <div class="slide s10">
+                    <div class="overlay"></div>
+                    <h2>Christophe KREMBLE-OPOME</h2>
+                    <a href="#">Le charisme</a>
+                </div>
+                <div class="slide s11">
+                    <div class="overlay"></div>
+                    <h2> Jamerson CARNEIRO DE OLIVEIRA </h2>
+                    <a href="#">Le fruité</a>
+                </div>
+                <div class="slide s12">
+                    <div class="overlay"></div>
+                    <h2>Carmelo PYROMAN</h2>
+                    <a href="#">Le clopeur fou</a>
+                </div>
+                <div class="slide s13">
+                    <div class="overlay"></div>
+                    <h2>Dominique DEGLINGUE</h2>
+                    <a href="#">LE COCAINOMAN</a>
+                </div>
+                <div class="slide s14">
+                    <div class="overlay"></div>
+                    <h2>Christian RIGOUREUX</h2>
+                    <a href="#">Le Vig's</a>
+                </div>
+                <div class="slide s15">
+                    <div class="overlay"></div>
+                    <h2>Mathieu QUEQUETTE</h2>
+                    <a href="#">Le quel mail ?</a>
+                </div>
+                <div class="slide s16">
+                    <div class="overlay"></div>
+                    <h2>Frédérique CULOT</h2>
+                    <a href="#">Le roi des minions</a>
+                </div>
+                <div class="slide s17">
+                    <div class="overlay"></div>
+                    <h2>Vincent ROUCOUPS</h2>
+                    <a href="#">Le gros tuyau</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+<script src="static/script.js"></script>
+
 </body>
 </html>
