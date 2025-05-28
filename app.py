@@ -21,7 +21,7 @@ def upload_file():
 
     filename = request.args.get('filename')
     processed_filename = request.args.get('processed_filename')
-    return render_template('index2.html', filename=filename, processed_filename=processed_filename)
+    return render_template('index.html', filename=filename, processed_filename=processed_filename)
 
 
 
@@ -103,7 +103,7 @@ def edge_detection(filename):
 def filtre_cartoon(filename):
     input_path = os.path.join(UPLOAD_FOLDER, filename)
 
-    output_path = os.path.join(UPLOAD_FOLDER, f"cartoon{filename}")
+    output_path = os.path.join(UPLOAD_FOLDER, f"cartoon_{filename}")
     shutil.copy(input_path, output_path)
 
   
@@ -118,7 +118,7 @@ def filtre_contraste(filename):
     input_path = os.path.join(UPLOAD_FOLDER, filename)
 
 
-    output_path = os.path.join(UPLOAD_FOLDER, f"contrast{filename}")
+    output_path = os.path.join(UPLOAD_FOLDER, f"contrast_{filename}")
     shutil.copy(input_path, output_path)
 
 
@@ -133,7 +133,7 @@ def filtre_oil_painting(filename):
     input_path = os.path.join(UPLOAD_FOLDER, filename)
 
   
-    output_path = os.path.join(UPLOAD_FOLDER, f"oil_paint{filename}")
+    output_path = os.path.join(UPLOAD_FOLDER, f"oil_paint_{filename}")
     shutil.copy(input_path, output_path)
 
     processed_output = oil_paint(output_path)

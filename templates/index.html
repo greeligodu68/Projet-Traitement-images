@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <title> Site traitement d'image</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 
 <body>
@@ -13,154 +13,125 @@
     </header>
     <section class="navigation">
         <ul class="navbar">
-            <a href="#filters" class="btn">
-                Filters
-            </a>
-            <a href="#effects" class="btn">
-                Effects
-            </a>
-            <a href="#advanced" class="btn">
-                Advanced
-            </a>
+            <form  method="post" enctype="multipart/form-data">
+                <input class="file" type="file" name="file" id="images">
+                <button class = "btn" type="submit">Print Image</button>
+            </form>
+            <br>
+            <form action="{{ url_for('upload_file') }}" method="get">
+                <button  class = "btn" type="submit">Return Home</button>
+            </form>
+            <br>
+            
+          {%if processed_filename%}
+          <form action="{{ url_for('download_file', filename=processed_filename) }}" method="get">
+          <button  class = "btn" type="submit">Download</button>
+          {%endif%}
+          </form>
+            </br>
         </ul>
     </section>
-    <section class="import" id="import">        
+
+   
+    <section class="import" id="import">
         <div class="import-container">
-            <!-- Boîte pour l'image originale -->
+            
             <div class="box">
-                <h1>Image</h1>
-
-                <form method="post" enctype="multipart/form-data">
-                    <input class="file" type="file" name="file"> 
-                    <button type="submit">Charger</button>
-                </form>
-
+                <label for="images">
+                    <span> <h1> Cliquez pour sélectionner une image</h1></span>
+                  
+                    </label>
+                    
                 {% if filename %}
-                    <img src="{{ url_for('static', filename='uploads/' + filename)}}" >
+                    <img class = "up_img" src="{{ url_for('static', filename='uploads/' + filename) }}" method = "get" >
                 {% endif %}
             </div>
-    
-            <!-- Boîte pour l'image traitée -->
+
+   
             <div class="box">
                 <h1>Résultat</h1>
-
                 {% if processed_filename %}
-                    <img src="{{ url_for('static', filename='uploads/' + processed_filename)}}" width="100%">
+                    <img class = "up_img" src="{{ url_for('static', filename='uploads/' + processed_filename) }}" >
                 {% endif %}
             </div>
         </div>
-    </section>  
-
-    <!-- Section pour les filtres -->
-    <section>
-    {% if filename %}
-        <a href="{{ url_for('convert_to_gray', filename=filename) }}">Convertir en Gris</a>
-        <a href="{{ url_for('filtre_moyenneur_image', filename=filename) }}">Filtre Moyenneur</a>
-        {% endif %}
-        {% if processed_filename %}
-        <a href="{{ url_for('download_file', filename=processed_filename) }}">Télécharger</a>
-    {% endif %}
     </section>
-   
-
-
-
-
 
     <section class="filters" id="filters">
-        <div class = "main-contain">
-            <div class = "slideshow-container">
+        <div class="main-contain">
+            <div class="slideshow-container">
                 <div class="slide s1">
                     <div class="overlay"></div>
-                    <h2> gray filter</h2>
-                    <a href="#">convert_to_gray</a>
+                    <h2>no filter</h2>
                 </div>
-
                 <div class="slide s2">
                     <div class="overlay"></div>
-                    <h2>François VONOTE-PAHOUF</h2>
-                    <a href="#">Le géant royal</a>
+                    <h2>gray filter</h2>
+                    {% if filename %}
+                     <a class = "link " href="{{ url_for('convert_to_gray', filename=filename) }}">Convertir en Gris</a>
+                {% endif %}
                 </div>
 
                 <div class="slide s3">
                     <div class="overlay"></div>
-                    <h2>Ahmed MAMADOUI</h2>
-                    <a href="#">Le beau gosse</a>
+                    <h2>filtre Moyenneur </h2>
+                    {% if filename %}
+                     <a class = "link " href="{{ url_for('filtre_moyenneur_image', filename=filename) }}">Moyenner Image</a>
+                {% endif %}
+                    
                 </div>
 
                 <div class="slide s4">
                     <div class="overlay"></div>
-                    <h2>Jean-Luc BISCOTTE</h2>
-                    <a href="#">L'amoureux du Maroc</a>
+                    <h2>filtre Erosion</h2>
+                    {% if filename %}
+                     <a class = "link " href="{{ url_for('filtre_erosion', filename=filename) }}">filtre Erosion</a>
+                {% endif %}
                 </div>
 
                 <div class="slide s5">
                     <div class="overlay"></div>
-                    <h2>Guillaume BARREAU</h2>
-                    <a href="#">Le raciste</a>
+                    <h2>Filtre Dilation</h2>
+                    {% if filename %}
+                     <a class = "link " href="{{ url_for('filtre_dilation', filename=filename) }}">Filtre dilation</a>
+                {% endif %}
                 </div>
                 <div class="slide s6">
                     <div class="overlay"></div>
-                    <h2>Elisabeth REINE-VECTORIEL</h2>
-                    <a href="#">L'autiste folle</a>
+                    <h2>gradient morpho</h2>
+                    {% if filename %}
+                    <a class = "link " href="{{ url_for('gradient_morphologique', filename=filename) }}">gradient morphologique</a>
+               {% endif %}
                 </div>
                 <div class="slide s7">
                     <div class="overlay"></div>
-                    <h2>Karime MOUGIN</h2>
-                    <a href="#">La j'ai pas le temps</a>
+                    <h2> Edge Detection</h2>
+                    {% if filename %}
+                    <a class = "link " href="{{ url_for('edge_detection', filename=filename) }}">edge detection</a>
+               {% endif %}
                 </div>
                 <div class="slide s8">
                     <div class="overlay"></div>
-                    <h2>Karine ZAMPEPLUS</h2>
-                    <a href="#">La vitesse</a>
+                    <h2>cartoon</h2>
+                    {% if filename %}
+                    <a class = "link " href="{{ url_for('filtre_cartoon', filename=filename) }}">filtre cartoon</a>
+               {% endif %}
                 </div>
                 <div class="slide s9">
                     <div class="overlay"></div>
-                    <h2>Juliette Âne</h2>
-                    <a href="#">Smash it</a>
+                    <h2> filtre contraste</h2>
+                    {% if filename %}
+                    <a class = "link " href="{{ url_for('filtre_contraste', filename=filename) }}">filtre constraste</a>
+               {% endif %}
                 </div>
                 <div class="slide s10">
                     <div class="overlay"></div>
-                    <h2>Christophe KREMBLE-OPOME</h2>
-                    <a href="#">Le charisme</a>
+                    <h2>oil painting</h2>
+                    {% if filename %}
+                    <a class = "link " href="{{ url_for('filtre_oil_painting', filename=filename) }}">filtre_oil_painting</a>
+               {% endif %}
                 </div>
-                <div class="slide s11">
-                    <div class="overlay"></div>
-                    <h2> Jamerson CARNEIRO DE OLIVEIRA </h2>
-                    <a href="#">Le fruité</a>
-                </div>
-                <div class="slide s12">
-                    <div class="overlay"></div>
-                    <h2>Carmelo PYROMAN</h2>
-                    <a href="#">Le clopeur fou</a>
-                </div>
-                <div class="slide s13">
-                    <div class="overlay"></div>
-                    <h2>Dominique DEGLINGUE</h2>
-                    <a href="#">LE COCAINOMAN</a>
-                </div>
-                <div class="slide s14">
-                    <div class="overlay"></div>
-                    <h2>Christian RIGOUREUX</h2>
-                    <a href="#">Le Vig's</a>
-                </div>
-                <div class="slide s15">
-                    <div class="overlay"></div>
-                    <h2>Mathieu QUEQUETTE</h2>
-                    <a href="#">Le quel mail ?</a>
-                </div>
-                <div class="slide s16">
-                    <div class="overlay"></div>
-                    <h2>Frédérique CULOT</h2>
-                    <a href="#">Le roi des minions</a>
-                </div>
-                <div class="slide s17">
-                    <div class="overlay"></div>
-                    <h2>Vincent ROUCOUPS</h2>
-                    <a href="#">Le gros tuyau</a>
-                </div>
-            </div>
-        </div>
+              
     </section>
     
 

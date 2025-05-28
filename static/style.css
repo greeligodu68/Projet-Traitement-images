@@ -333,47 +333,33 @@ h1{
 }
 
 .s1{
-    background-image : url("../static/Images/nature.jpg")}
+    background-image : url("../static/Images/river.jpg")}
 
 .s2{
-    background-image : url("../static/Images/nature_gray.jpg")}
+    background-image : url("../static/Images/gray_river.jpg")}
 
 
 .s3{
-    background-image : url("../static/Images/nature_bruité.png")}
+    background-image : url("../static/Images/river_bruitée.jpg")}
 
 
 .s4{
-    background-image : url("../static/Images/erosion_nature.jpg")}
+    background-image : url("../static/Images/erosion_river.jpg")}
 
 
 .s5{
-  background-image : url("../static/Images/dilation_nature.jpg");
+  background-image : url("../static/Images/dilation_river.jpg");
  
 
 }
 
 .s6{
-    background-image : url("../static/Images/gradient_nature.jpg")}
+    background-image : url("../static/Images/gradient_river.jpg")}
 .s7{
-    background-image : url("../static/Images/edge_detection_nature.jpg.")}
+    background-image : url("../static/Images/edge_detection_river.jpg")}
 .s8{
-    background-image : url("../static/Images/nature.jpg")}
+    background-image : url("../static/Images/cartoon_river.jpg")}
 .s9{
-    background-image : url("../static/Images/nature.jpg")}
+    background-image : url("../static/Images/contrast_river.jpg")}
 .s10{
-    background-image : url("../static/Images/nature.jpg")}
-.s11{
-    background-image : url("../static/Images/nature.jpg")}
-.s12{
-    background-image : url("../static/Images/nature.jpg")}
-.s13{
-    background-image : url("../static/Images/nature.jpg")}
-.s14{
-    background-image : url("../static/Images/nature.jpg")}
-.s15{
-    background-image : url("../static/Images/nature.jpg")}
-.s16{
-    background-image : url("../static/Images/nature.jpg")}
-.s17{
-    background-image : url("../static/Images/nature.jpg")}
+    background-image : url("../static/Images/oil_paint_river.jpg")}
