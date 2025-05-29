@@ -240,7 +240,7 @@ def filtre_Cartoon(image_path, seuil_contour=80, niveaux_couleur=5  ):
     contours = Image.open(temp_path).convert("L")
     contour_pix = contours.load()
 
-    # Étape 4 : Fusion contours + image quantifiée
+    # Fusion contours + image quantifiée
     final_image = Image.new("RGB", (width, height))
     final_pix = final_image.load()
     for i in range(width):
@@ -285,9 +285,7 @@ def contraste(image_path):
 def rgb_to_intensity(r, g, b):
     return int((r + g + b) / 3)
 
-#IMPORTANT: en augmentant la valeur de radius l'image deveint plus stylée
-#Mais ça prend beaucoup bcp de temps
-#Essayez vous meme pour voir c'est stylé
+
 
 def oil_paint(image_path, radius=2, intensity_levels=16):
     image= Image.open(image_path).convert('RGB')
