@@ -62,11 +62,11 @@
             <div class="slideshow-container">
                 <div class="slide s1">
                     <div class="overlay"></div>
-                    <h2>no filter</h2>
+                    <h2>No Filter</h2>
                 </div>
                 <div class="slide s2">
                     <div class="overlay"></div>
-                    <h2>gray filter</h2>
+                    <h2>Gray Filter</h2>
                     {% if filename %}
                      <a class = "link " href="{{ url_for('convert_to_gray', filename=filename) }}">Convertir en Gris</a>
                 {% endif %}
@@ -74,7 +74,7 @@
 
                 <div class="slide s3">
                     <div class="overlay"></div>
-                    <h2>filtre Moyenneur </h2>
+                    <h2>Filtre Moyenneur </h2>
                     {% if filename %}
                      <a class = "link " href="{{ url_for('filtre_moyenneur_image', filename=filename) }}">Moyenner Image</a>
                 {% endif %}
@@ -83,52 +83,52 @@
 
                 <div class="slide s4">
                     <div class="overlay"></div>
-                    <h2>filtre Erosion</h2>
+                    <h2>Erosion</h2>
                     {% if filename %}
-                     <a class = "link " href="{{ url_for('filtre_erosion', filename=filename) }}">filtre Erosion</a>
+                     <a class = "link " href="{{ url_for('filtre_erosion', filename=filename) }}">Appliquer Filtre Erosion</a>
                 {% endif %}
                 </div>
 
                 <div class="slide s5">
                     <div class="overlay"></div>
-                    <h2>Filtre Dilation</h2>
+                    <h2>Dilation</h2>
                     {% if filename %}
-                     <a class = "link " href="{{ url_for('filtre_dilation', filename=filename) }}">Filtre dilation</a>
+                     <a class = "link " href="{{ url_for('filtre_dilation', filename=filename) }}">Appliquer Filtre dilation</a>
                 {% endif %}
                 </div>
                 <div class="slide s6">
                     <div class="overlay"></div>
-                    <h2>gradient morpho</h2>
+                    <h2>Gradient Morpho</h2>
                     {% if filename %}
-                    <a class = "link " href="{{ url_for('gradient_morphologique', filename=filename) }}">gradient morphologique</a>
+                    <a class = "link " href="{{ url_for('gradient_morphologique', filename=filename) }}"> Effet Gradient Morphologique</a>
                {% endif %}
                 </div>
                 <div class="slide s7">
                     <div class="overlay"></div>
-                    <h2> Edge Detection</h2>
+                    <h2>Edge Detection</h2>
                     {% if filename %}
-                    <a class = "link " href="{{ url_for('edge_detection', filename=filename) }}">edge detection</a>
+                    <a class = "link " href="{{ url_for('edge_detection', filename=filename) }}"> Effet Edge Detection</a>
                {% endif %}
                 </div>
                 <div class="slide s8">
                     <div class="overlay"></div>
-                    <h2>cartoon</h2>
+                    <h2>Filtre Cartoon</h2>
                     {% if filename %}
-                    <a class = "link " href="{{ url_for('filtre_cartoon', filename=filename) }}">filtre cartoon</a>
+                    <a class = "link " href="{{ url_for('filtre_cartoon', filename=filename) }}">Effet Cartooniser</a>
                {% endif %}
                 </div>
                 <div class="slide s9">
                     <div class="overlay"></div>
-                    <h2> filtre contraste</h2>
+                    <h2>Contraste</h2>
                     {% if filename %}
-                    <a class = "link " href="{{ url_for('filtre_contraste', filename=filename) }}">filtre constraste</a>
+                    <a class = "link " href="{{ url_for('filtre_contraste', filename=filename) }}">Constraster l'image</a>
                {% endif %}
                 </div>
                 <div class="slide s10">
                     <div class="overlay"></div>
-                    <h2>oil painting</h2>
+                    <h2>Oil Painting</h2>
                     {% if filename %}
-                    <a class = "link " href="{{ url_for('filtre_oil_painting', filename=filename) }}">filtre_oil_painting</a>
+                    <a class = "link " href="{{ url_for('filtre_oil_painting', filename=filename) }}">Effet Oil Painting</a>
                {% endif %}
                 </div>
               
